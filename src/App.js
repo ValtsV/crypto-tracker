@@ -60,6 +60,7 @@ function App() {
             />
           );
         })}
+        <div className="phantom-box"></div>
       </div>
     </div>
   );

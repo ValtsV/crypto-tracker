@@ -50,11 +50,21 @@
   color: #e2e2e2;
 }
 
+.phantom-box {
+  display: none;
+}
+
 @media (max-width: 900px) {
   .main-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 50px;
+  }
+
+  .phantom-box {
+    display: block;
+    width: 300px;
+    height: 1px;
   }
 }
