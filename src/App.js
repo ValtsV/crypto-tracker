@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./App.css";
 import Coin from "./components/Coin";
@@ -15,6 +15,7 @@ function App() {
       )
       .then((res) => {
         setCoins(res.data);
+        console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -43,21 +44,23 @@ function App() {
           />
         </form>
       </div>
-
-      {filteredCoins.map((coin) => {
-        return (
-          <Coin
-            key={coin.id}
-            coinName={coin.name}
-            image={coin.image}
-            symbol={coin.symbol}
-            volume={coin.market_cap}
-            price={coin.current_price}
-            priceChange={coin.price_change_percentage_24h}
-            marketcap={coin.total_volume}
-          />
-        );
-      })}
+      {errorMsg && <div>El servidor no quiere cooperar. Lo siento!</div>}
+      <div className="main-container">
+        {filteredCoins.map((coin) => {
+          return (
+            <Coin
+              key={coin.id}
+              coinName={coin.name}
+              image={coin.image}
+              symbol={coin.symbol}
+              volume={coin.total_volume}
+              price={coin.current_price}
+              priceChange={coin.price_change_percentage_24h}
+              marketcap={coin.market_cap}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 }
